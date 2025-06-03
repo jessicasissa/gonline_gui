@@ -1,11 +1,11 @@
 import tkinter as tk
 from fileinput import filename
 from tkinter import filedialog, Frame
+from bs4 import BeautifulSoup
 import tkinter.scrolledtext as st
 import tkinter.font as tkfont
 import shutil
 import mammoth
-from bs4 import BeautifulSoup
 import os
 
 
@@ -56,7 +56,7 @@ def transform_file():
 
     with open(out_path, "rb") as docx_file:
         result = mammoth.convert_to_html(docx_file)
-        text = result.value  # The generated HTML
+        text = result.value
         try:
             with open(output_html, "w", encoding="utf-8") as html_file:
                 html_file.write(text)
@@ -195,8 +195,7 @@ bottom_frame = Frame(main_frame, pady=10, bg=bg_color)
 bottom_frame.pack(fill="x")
 
 btn_run = tk.Button(bottom_frame,text="Gerar",bg="#3549ff",fg="white",pady=10,font="Calibri 13 bold",relief="solid",bd=0,command=gerar_online)
-btn_run.pack(fill="x") # botão "gerar"
-
+btn_run.pack(fill="x") 
 
 
 root.mainloop()
